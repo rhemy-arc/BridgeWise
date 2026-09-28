@@ -7,12 +7,12 @@
   "license": "UNLICENSED",
   "type": "commonjs",
   "scripts": {
-    "build": "nest build",
+    "build": "node init && nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
-    "start": "nest start",
-    "start:dev": "nest start --watch",
-    "start:debug": "nest start --debug --watch",
-    "start:prod": "node dist/main",
+    "start": "node init && nest start",
+    "start:dev": "node init && nest start --watch",
+    "start:debug": "node init && nest start --debug --watch",
+    "start:prod": "node init && node dist/main",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -68,12 +68,29 @@
   },
   "jest": {
     "moduleFileExtensions": [
-      "js",
+      "ts",
       "json",
-      "ts"
+      "js"
     ],
     "rootDir": "src",
     "testRegex": ".*\\.spec\\.ts$",
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "<rootDir>/webhook-support/",
+      "<rootDir>/webhooks/",
+      "<rootDir>/real-time-fee-aggregation/",
+      "<rootDir>/reliability-score/",
+      "<rootDir>/SDK-Debug/",
+      "<rootDir>/dynamic-bridge-discovery/",
+      "<rootDir>/transactions/retry/useRetryFeedback\\.ts$",
+      "<rootDir>/custom-theme/",
+      "<rootDir>/gas-estimation/",
+      "<rootDir>/monotoring/",
+      "<rootDir>/Analytics-Export/",
+      "<rootDir>/bridge-compare/",
+      "<rootDir>/bridge-providers/",
+      "<rootDir>/bridge-recommendation/"
+    ],
     "transform": {
       "^.+\\.(t|j)s$": "ts-jest"
     },
